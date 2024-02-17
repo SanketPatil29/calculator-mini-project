@@ -60,9 +60,7 @@ pipeline {
                       to: 'sanketsp29@gmail.com',
                       mimeType: 'text/html'
         }
-    }
 
-    post {
         failure {
             emailext subject: 'Pipeline Failed - ${currentBuild.result}',
                       body: 'Pipeline failed: ${BUILD_URL}',
