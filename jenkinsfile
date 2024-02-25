@@ -54,18 +54,19 @@ pipeline {
         }
     }
     post {
-        success {
-            emailext subject: 'Pipeline Successful - ${currentBuild.result}',
-                      body: 'Pipeline succeeded: ${BUILD_URL}',
-                      to: 'sanketsp29@gmail.com',
-                      mimeType: 'text/html'
-        }
-
-        failure {
-            emailext subject: 'Pipeline Failed - ${currentBuild.result}',
-                      body: 'Pipeline failed: ${BUILD_URL}',
-                      to: 'sanketsp29@gmail.com',
-                      mimeType: 'text/html'
-        }
+    success {
+        emailext subject: "Build successful in Jenkins: ${currentBuild.projectName} - #${currentBuild.number}",
+                  body: "Build successful. Check console output at ${currentBuild.absoluteUrl} to view the results.",
+                  to: 'sanketsp29@gmail.com',
+                  mimeType: 'text/html'
     }
+
+    failure {
+        emailext subject: "Build failed in Jenkins: ${currentBuild.projectName} - #${currentBuild.number}",
+                  body: "Check console output at ${currentBuild.absoluteUrl} to view the results.",
+                  to: 'sanketsp29@gmail.com',
+                  mimeType: 'text/html'
+    }
+}
+
 }
