@@ -19,13 +19,11 @@
         name: docker
         state: started
         
+    - name: Remove existing Docker container if exists
+      shell: docker rm -f scientific-calculator
+      ignore_errors: yes
+
     - name: Create Docker container
       shell: docker create --name scientific-calculator -it sanketp29/spe-mini-project
       register: docker_create_result
-      
-    - name: Display Docker Create Result
-      debug:
-        var: docker_create_result
 
-    - name: Start created Docker container
-      shell: docker start scientific-calculator
