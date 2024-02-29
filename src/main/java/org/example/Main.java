@@ -1,9 +1,9 @@
 package org.example;
 
 import java.util.Scanner;
-System.out.println("Scientific Calculator");
 public class Main {
     public static void main(String[] args){
+        System.out.println("----------Scientific Calculator----------");
         while(true){
             Calculator calculator = new Calculator();
             Scanner scanner = new Scanner(System.in);
