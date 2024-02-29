@@ -54,18 +54,22 @@ pipeline {
         }
     }
     post {
-    success {
-        emailext subject: "Build successful in Jenkins: ${currentBuild.projectName} - #${currentBuild.number}",
-                  body: "Build successful. Check console output at ${currentBuild.absoluteUrl} to view the results.",
-                  to: 'sanketsp29@gmail.com',
-                  mimeType: 'text/html'
+        always {
+            stage('Email Notification') {
+                script {
+                    if (currentBuild.result == 'SUCCESS') {
+                        emailext subject: "Build successful in Jenkins: ${currentBuild.projectName} - #${currentBuild.number}",
+                                  body: "Build successful. Check console output at ${currentBuild.absoluteUrl} to view the results.",
+                                  to: 'sanketsp29@gmail.com',
+                                  mimeType: 'text/html'
+                    } else if (currentBuild.result == 'FAILURE') {
+                        emailext subject: "Build failed in Jenkins: ${currentBuild.projectName} - #${currentBuild.number}",
+                                  body: "Check console output at ${currentBuild.absoluteUrl} to view the results.",
+                                  to: 'sanketsp29@gmail.com',
+                                  mimeType: 'text/html'
+                    }
+                }
+            }
+        }
     }
-
-    failure {
-        emailext subject: "Build failed in Jenkins: ${currentBuild.projectName} - #${currentBuild.number}",
-                  body: "Check console output at ${currentBuild.absoluteUrl} to view the results.",
-                  to: 'sanketsp29@gmail.com',
-                  mimeType: 'text/html'
-    }
-}
 }
