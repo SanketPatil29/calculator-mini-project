@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
-
+System.out.println("Scientific Calculator");
 public class Main {
     public static void main(String[] args){
         while(true){
