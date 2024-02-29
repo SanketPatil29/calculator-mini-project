@@ -18,5 +18,7 @@
       service:
         name: docker
         state: started
-    - name: Running container
-      shell: docker run -it -d sanketp29/spe-mini-project
+        
+    - name: Create Docker container
+      shell: docker create --name scientific-calculator -it sanketp29/spe-mini-project
+      register: docker_create_result
