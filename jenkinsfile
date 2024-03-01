@@ -4,7 +4,6 @@ pipeline {
         DOCKER_IMAGE_NAME = 'spe-mini-project'
         GITHUB_REPO_URL = 'https://github.com/SanketPatil29/calculator-mini-project.git'
     }
-
     stages {
         stage('Checkout') {
             steps {
