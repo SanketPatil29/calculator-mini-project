@@ -15,7 +15,7 @@ public class Main {
             System.out.println("5. Quit");
 
 
-            System.out.print("Enter the operation number: ");
+            System.out.print("Enter the choice: ");
             int operation = scanner.nextInt();
 
             if (operation == 5){
